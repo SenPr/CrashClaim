@@ -177,7 +177,6 @@ public class ClaimDataManager implements Listener {
             int originalArea = ContributionManager.getArea(claim.getMinX(), claim.getMinZ(), claim.getMaxX(), claim.getMaxZ());
 
             int difference = area - originalArea;
-
             if (difference > 0) {
                 int price = (int) Math.ceil(difference * GlobalConfig.money_per_block);
                 String priceString = Integer.toString(price);
@@ -214,7 +213,7 @@ public class ClaimDataManager implements Listener {
                             return "";
                         },
                         player -> ""
-                        ).initialize();
+                        ).open();
             } else {
                 //Need to issue a refund
                 ContributionManager.addContribution(claim, newMinX, newMinZ, newMaxX, newMaxZ, resizer.getUniqueId());  // Contribution tracking
