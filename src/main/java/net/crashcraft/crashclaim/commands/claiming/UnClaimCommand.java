@@ -3,6 +3,7 @@ package net.crashcraft.crashclaim.commands.claiming;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import net.crashcraft.crashclaim.CrashClaim;
+import net.crashcraft.crashclaim.api.events.UnclaimEvent;
 import net.crashcraft.crashclaim.claimobjects.Claim;
 import net.crashcraft.crashclaim.claimobjects.SubClaim;
 import net.crashcraft.crashclaim.config.GlobalConfig;
@@ -13,6 +14,7 @@ import net.crashcraft.crashclaim.permissions.PermissionRoute;
 import net.crashcraft.crashclaim.utils.menusystem.defaultmenus.ConfirmationMenu;
 import net.crashcraft.crashclaim.visualize.VisualizationManager;
 import net.crashcraft.crashclaim.visualize.api.VisualGroup;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -59,7 +61,10 @@ public class UnClaimCommand extends BaseCommand {
                                     return "";
                                 }
                             }
-
+                            // call new event here
+                            UnclaimEvent event = new UnclaimEvent(claim);
+                            Bukkit.getPluginManager().callEvent(event);
+                            //
                             CrashClaim.getPlugin().getDataManager().deleteClaim(claim);
                             VisualGroup group = visualizationManager.fetchVisualGroup(player, false);
                             if (group != null){
@@ -101,7 +106,10 @@ public class UnClaimCommand extends BaseCommand {
                                         return "";
                                     }
                                 }
-
+                                // call new event here
+                                UnclaimEvent event = new UnclaimEvent(claim);
+                                Bukkit.getPluginManager().callEvent(event);
+                                //
                                 CrashClaim.getPlugin().getDataManager().deleteClaim(claim);
                                 VisualGroup group = visualizationManager.fetchVisualGroup(player, false);
                                 if (group != null) {
@@ -131,7 +139,10 @@ public class UnClaimCommand extends BaseCommand {
                         if (aBoolean) {
                             for (Claim claim : claims) {
                                 // Admin Command no need for permission checks
-
+                                // call new event here
+                                UnclaimEvent event = new UnclaimEvent(claim);
+                                Bukkit.getPluginManager().callEvent(event);
+                                //
                                 CrashClaim.getPlugin().getDataManager().deleteClaim(claim);
                                 VisualGroup group = visualizationManager.fetchVisualGroup(player, false);
                                 if (group != null) {
