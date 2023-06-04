@@ -1,11 +1,7 @@
 package net.crashcraft.crashclaim.commands;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Flags;
+import co.aikar.commands.annotation.*;
 import io.papermc.lib.PaperLib;
 import net.crashcraft.crashclaim.CrashClaim;
 import net.crashcraft.crashclaim.claimobjects.Claim;
@@ -29,6 +25,7 @@ public class EjectCommand extends BaseCommand {
 
     @Default
     @CommandCompletion("@players @nothing")
+    @Syntax("<player>")
     public void onDefault(Player player, @Flags("other") String value){
         Player otherPlayer = CrashClaim.getPlugin().getServer().getPlayer(value);
 
