@@ -3,7 +3,6 @@ package net.crashcraft.crashclaim.pluginsupport.plugins;
 import com.Acrobot.ChestShop.Signs.ChestShopSign;
 import net.crashcraft.crashclaim.config.GroupSettings;
 import net.crashcraft.crashclaim.pluginsupport.PluginSupport;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -24,7 +23,7 @@ public class ChestShopSupport implements PluginSupport {
 
     @Override
     public void onEnable(Plugin plugin) {
-        Plugin chestshop = Bukkit.getPluginManager().getPlugin("ChestShop");
+
     }
 
     @Override

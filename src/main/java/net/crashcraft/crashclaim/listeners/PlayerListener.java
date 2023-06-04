@@ -136,7 +136,7 @@ public class PlayerListener implements Listener {
                 || perms.getUntrackedBlocks().contains(e.getClickedBlock().getType()))
             return;
 
-        if (e.getClickedBlock() != null && CrashClaim.getPlugin().getPluginSupport().canInteract(player, e.getClickedBlock().getLocation())) {
+        if (CrashClaim.getPlugin().getPluginSupport().canInteract(player, e.getClickedBlock().getLocation())) {
             return;
         }
 
