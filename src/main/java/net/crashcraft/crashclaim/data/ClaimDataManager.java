@@ -2,6 +2,7 @@ package net.crashcraft.crashclaim.data;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.crashcraft.crashclaim.CrashClaim;
+import net.crashcraft.crashclaim.api.events.ClaimDownsizeEvent;
 import net.crashcraft.crashclaim.claimobjects.Claim;
 import net.crashcraft.crashclaim.claimobjects.PermissionGroup;
 import net.crashcraft.crashclaim.claimobjects.SubClaim;
@@ -196,7 +197,6 @@ public class ClaimDataManager implements Listener {
                                         if (response.getTransactionStatus() == TransactionResponse.SUCCESS) {
                                             ContributionManager.addContribution(claim, newMinX, newMinZ, newMaxX, newMaxZ, resizer.getUniqueId());  // Contribution tracking
                                             resizeClaimCall(claim, newMinX, newMinZ, newMaxX, newMaxZ);
-
                                             consumer.accept(true);
                                             return;
                                         } else {
@@ -217,6 +217,10 @@ public class ClaimDataManager implements Listener {
             } else {
                 //Need to issue a refund
                 ContributionManager.addContribution(claim, newMinX, newMinZ, newMaxX, newMaxZ, resizer.getUniqueId());  // Contribution tracking
+                // call downsize event
+                ClaimDownsizeEvent event = new ClaimDownsizeEvent(claim);
+                Bukkit.getPluginManager().callEvent(event);
+                //
                 resizeClaimCall(claim, newMinX, newMinZ, newMaxX, newMaxZ);
                 consumer.accept(true);
             }

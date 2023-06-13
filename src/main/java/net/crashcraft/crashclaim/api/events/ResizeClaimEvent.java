@@ -5,9 +5,9 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class UnclaimEvent extends Event {
-    private final Claim claim;
+public class ResizeClaimEvent extends Event {
 
+    private final Claim claim;
     private static final HandlerList HANDLERS = new HandlerList();
 
     public static HandlerList getHandlerList()
@@ -16,16 +16,16 @@ public class UnclaimEvent extends Event {
     }
 
     @Override
-    public @NotNull HandlerList getHandlers()
-    {
+    public @NotNull HandlerList getHandlers() {
         return HANDLERS;
     }
 
-    public UnclaimEvent(Claim claim) {
+    public ResizeClaimEvent(Claim claim) {
         this.claim = claim;
     }
 
     public Claim getClaim() {
         return this.claim;
     }
+
 }
