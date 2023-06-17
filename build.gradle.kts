@@ -22,6 +22,8 @@ repositories {
     maven("https://repo.maven.apache.org/maven2/")
     // ChestShop
     maven("https://repo.minebench.de/")
+    // QuickShop-Hikari
+    maven("https://repo.codemc.io/repository/maven-public")
 
     maven {
         url = uri("https://repo.papermc.io/repository/maven-public/")
@@ -63,6 +65,7 @@ dependencies {
     compileOnly( "us.dynmap:dynmap-api:3.2-SNAPSHOT")
     compileOnly("net.luckperms:api:5.4")
     compileOnly("com.acrobot.chestshop:chestshop:3.12")
+    compileOnly("com.ghostchu:quickshop-bukkit:4.2.2.10:shaded")
 
     // Cache2k
     val cache2kVersion = "1.2.2.Final"

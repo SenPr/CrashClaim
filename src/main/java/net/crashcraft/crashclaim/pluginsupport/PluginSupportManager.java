@@ -3,6 +3,7 @@ package net.crashcraft.crashclaim.pluginsupport;
 import net.crashcraft.crashclaim.CrashClaim;
 import net.crashcraft.crashclaim.pluginsupport.plugins.ChestShopSupport;
 import net.crashcraft.crashclaim.pluginsupport.plugins.LuckPermsSupport;
+import net.crashcraft.crashclaim.pluginsupport.plugins.QuickShopHikariSupport;
 import net.crashcraft.crashclaim.pluginsupport.plugins.WorldGuardSupport;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -19,7 +20,8 @@ public class PluginSupportManager implements Listener {
     private static final List<Class<? extends PluginSupport>> pluginSupportWrappers = Arrays.asList(
             WorldGuardSupport.class,
             LuckPermsSupport.class,
-            ChestShopSupport.class
+            ChestShopSupport.class,
+            QuickShopHikariSupport.class
     );
 
     private final CrashClaim crashClaim;
@@ -36,8 +38,12 @@ public class PluginSupportManager implements Listener {
         for (Class<? extends PluginSupport> pluginSupport : pluginSupportWrappers){
             try {
                 String pluginName = getPluginName(pluginSupport);
-
-                Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
+                Plugin plugin;
+                if (pluginName.equals("QuickShopHikari")) {
+                    plugin = Bukkit.getPluginManager().getPlugin("QuickShop-Hikari");
+                } else {
+                    plugin = Bukkit.getPluginManager().getPlugin(pluginName);
+                }
                 if (plugin == null){
                     continue;
                 }
