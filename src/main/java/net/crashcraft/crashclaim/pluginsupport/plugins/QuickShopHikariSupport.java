@@ -44,11 +44,9 @@ public class QuickShopHikariSupport implements PluginSupport {
     @Override
     public boolean canInteract(Player player, Location loc) {
         if (loc.getBlock().getBlockData() instanceof Directional){
-            Bukkit.getLogger().info("DEBUG: block is directional");
             return false;
         }
         Shop shop = quickShopAPI.getShopManager().getShop(loc);
-        Bukkit.getLogger().info("DEBUG: " + shop);
         return shop != null;
     }
 
